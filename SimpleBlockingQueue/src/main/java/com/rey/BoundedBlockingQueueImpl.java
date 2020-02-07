@@ -27,7 +27,8 @@ public class BoundedBlockingQueueImpl implements BoundedBlockingQueue {
 		}
 //		System.out.println("put: " + element);
 		queue.offer(element);
-		notify();
+//		notify();
+		notifyAll();
 	}
 
 	@Override
@@ -38,8 +39,9 @@ public class BoundedBlockingQueueImpl implements BoundedBlockingQueue {
 		}
 		Object element = queue.poll();
 //		System.out.println("get: " + element);
-		notify();
-
+//		notify();
+		notifyAll();
+		
 		return element;
 	}
 

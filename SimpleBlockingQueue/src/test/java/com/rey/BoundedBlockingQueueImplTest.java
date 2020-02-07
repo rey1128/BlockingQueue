@@ -89,9 +89,9 @@ public class BoundedBlockingQueueImplTest {
 		BoundedBlockingQueueImpl blockingQueue = new BoundedBlockingQueueImpl();
 		long capacity = blockingQueue.getCapacity();
 		
-		ScheduledExecutorService scheduledExecutorService = new ScheduledThreadPoolExecutor(2);
-		scheduledExecutorService.scheduleAtFixedRate(new Producer(blockingQueue), 0, 100, TimeUnit.MILLISECONDS);
-		scheduledExecutorService.scheduleAtFixedRate(new Consumer(blockingQueue), 0, 200, TimeUnit.MILLISECONDS);
+		ScheduledExecutorService scheduledExecutorService = new ScheduledThreadPoolExecutor(20);
+		scheduledExecutorService.scheduleAtFixedRate(new Producer(blockingQueue), 0, 10, TimeUnit.MILLISECONDS);
+		scheduledExecutorService.scheduleAtFixedRate(new Consumer(blockingQueue), 0, 20, TimeUnit.MILLISECONDS);
 
 		// after some time, the queue is between the state full or with one element left
 		List<Integer> checkpoints = RandomListUtil.generateNonEmptyRandomList(0, 1000);
